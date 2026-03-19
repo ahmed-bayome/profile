@@ -1,26 +1,101 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
+/* ─── Design Tokens ─── */
+@theme {
+  /* Backgrounds */
+  --color-bg:       #1a1a1a;
+  --color-surface:  #1e1e1e;
+  --color-bg-2:     #2a2a2a;
+
+  /* Brand green */
+  --color-green:    #4ade80;
+  --color-green-2:  #22c55e;
+  --color-green-3:  #86efac;
+  --color-green-4:  #16a34a;
+
+  /* Text */
+  --color-text:     #e2e2e2;
+  --color-muted:    #666666;
+
+  /* Borders */
+  --color-border:   #2a2a2a;
+
+  /* Hover */
+  --color-hover:    #1f2a1f;
+
+  /* Legacy aliases (keep existing Tailwind classes working) */
+  --color-white:    #FFFFFF;
+  --color-bg-1:     #1a1a1a;
+  --color-gray-1:   #666666;
+  --color-green-1:  #6A9955;
+  --color-blue-1:   #569CD6;
+}
+
+@theme {
+  --font-mono: var(--font-mono);
+}
+
+/* ─── CSS Variables (for raw var() usage in canvas / JS components) ─── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg:      #1a1a1a;
+  --surface: #1e1e1e;
+  --green:   #4ade80;
+  --text:    #e2e2e2;
+  --muted:   #666666;
+  --border:  #2a2a2a;
+  --hover:   #1f2a1f;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ─── Base ─── */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    @apply bg-bg font-mono text-text;
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-x: hidden;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─── Utilities ─── */
+@utility main-x {
+  @apply max-w-7xl mx-auto px-12;
+}
+
+@utility text-body {
+  @apply text-xl text-muted font-light;
+}
+
+@utility section-title {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+@utility btn {
+  padding: 10px 24px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  transition: all 0.2s;
+  display: inline-block;
+}
+
+@utility btn-primary {
+  background: var(--green);
+  color: #111;
+  font-weight: 700;
+}
+
+@utility btn-outline {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
 }
