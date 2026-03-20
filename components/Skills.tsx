@@ -25,7 +25,7 @@ const skills: Skill[] = [
 ];
 
 export const Skills = () => (
-  <section id='skills' className='px-12 py-[60px] border-b border-border'>
+  <section id='skills' className='container-x section-y border-b border-border'>
     <SectionHeader title='skills' subtitle='what i work with' />
 
     {/* Skills grid */}
@@ -35,8 +35,8 @@ export const Skills = () => (
           key={cat}
           className='bg-bg px-6 py-5 cursor-default transition-colors hover:bg-hover'
         >
-          <div className='text-green text-[10px] mb-2 tracking-widest'>{cat}</div>
-          <div className='text-[13px] text-text'>{set.join(' / ')}</div>
+          <div className='text-green text-2xs mb-2 tracking-widest'>{cat}</div>
+          <div className='text-sm text-text'>{set.join(' / ')}</div>
         </div>
       ))}
     </div>

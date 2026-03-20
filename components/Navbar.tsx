@@ -9,7 +9,7 @@ const navs = [
 
 export const Navbar = () => (
   <nav className='border-b border-border sticky top-0 bg-bg z-50'>
-    <div className='flex justify-between items-center h-16 px-12'>
+    <div className='container-x flex justify-between items-center h-16'>
       <Link href='/' className='no-underline'>
         <ComponentText text='AhmedBayome' />
       </Link>
@@ -18,7 +18,7 @@ export const Navbar = () => (
           <Link
             key={nav}
             href={href}
-            className='text-muted no-underline text-[13px] transition-colors hover:text-green'
+            className='text-muted no-underline text-sm transition-colors hover:text-green'
           >
             {nav}
           </Link>

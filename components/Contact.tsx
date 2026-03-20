@@ -1,4 +1,13 @@
-const contacts = [
+import { SectionHeader } from "./SectionHeader";
+
+type Contact = {
+  icon: string;
+  label: string;
+  value: string;
+  href: string;
+};
+
+const contacts: Contact[] = [
   {
     icon: '@',
     label: 'EMAIL',
@@ -26,16 +35,11 @@ const contacts = [
 ];
 
 export const Contact = () => (
-  <section id='contact' className='px-12 py-[60px] border-b border-border'>
-    {/* Section header */}
-    <div className='flex items-center gap-4 mb-10'>
-      <span className='font-syne text-[22px] font-bold'>
-        <span className='text-green'>./</span>contact
-      </span>
-      <div className='flex-1 h-px bg-border' />
-      <span className='text-muted text-[11px]'>{"let's connect"}</span>
-    </div>
-
+  <section id='contact' className='container-x section-y border-b border-border'>
+    <SectionHeader
+      title='contact'
+      subtitle="let's connect"
+    />
     {/* Contact grid */}
     <div className='grid grid-cols-2 gap-px bg-border'>
       {contacts.map(({ icon, label, value, href }) => (
@@ -45,10 +49,10 @@ export const Contact = () => (
         >
           <span className='text-green text-base w-5 text-center shrink-0'>{icon}</span>
           <div>
-            <div className='text-muted text-[11px] mb-1'>{label}</div>
+            <div className='text-muted text-2xs mb-1'>{label}</div>
             <a
               href={href}
-              className='text-text text-[13px] no-underline transition-colors hover:text-green'
+              className='text-text text-sm no-underline transition-colors hover:text-green'
             >
               {value}
             </a>

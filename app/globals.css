@@ -3,47 +3,59 @@
 /* ─── Design Tokens ─── */
 @theme {
   /* Backgrounds */
-  --color-bg:       #1a1a1a;
-  --color-surface:  #1e1e1e;
-  --color-bg-2:     #2a2a2a;
+  --color-bg: #1a1a1a;
+  --color-surface: #1e1e1e;
+  --color-surface-2: #2a2a2a;
 
-  /* Brand green */
-  --color-green:    #4ade80;
-  --color-green-2:  #22c55e;
-  --color-green-3:  #86efac;
-  --color-green-4:  #16a34a;
+  /* Brand */
+  --color-green: #4ade80;
+  /* primary */
+  --color-green-dim: #22c55e;
+  /* darker */
+  --color-green-soft: #86efac;
+  /* hover/light */
+  --color-on-green: #111111;
+  /* text ON a green bg */
 
   /* Text */
-  --color-text:     #e2e2e2;
-  --color-muted:    #666666;
+  --color-text: #e2e2e2;
+  --color-muted: #666666;
 
-  /* Borders */
-  --color-border:   #2a2a2a;
+  /* Border / hover */
+  --color-border: #2a2a2a;
+  --color-hover: #1f2a1f;
 
-  /* Hover */
-  --color-hover:    #1f2a1f;
+  /* Accent */
+  --color-blue: #569CD6;
 
-  /* Legacy aliases (keep existing Tailwind classes working) */
-  --color-white:    #FFFFFF;
-  --color-bg-1:     #1a1a1a;
-  --color-gray-1:   #666666;
-  --color-green-1:  #6A9955;
-  --color-blue-1:   #569CD6;
-}
+  /* Typography */
+  --text-2xs: 0.6875rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-base: 1rem;
+  --text-md: 1.125rem;
+  --text-lg: 1.375rem;
+  --text-hero: clamp(3rem, 8vw, 5.5rem);
+  --text-title: clamp(2rem, 6vw, 3.5rem);
 
-@theme {
-  --font-mono: var(--font-mono);
+  /* Spacing */
+  --spacing-section: 3.75rem;
+  --spacing-x: 3rem;
+  --spacing-gap: 0.0625rem;
+
+  /* Font */
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
 /* ─── CSS Variables (for raw var() usage in canvas / JS components) ─── */
 :root {
-  --bg:      #1a1a1a;
+  --bg: #1a1a1a;
   --surface: #1e1e1e;
-  --green:   #4ade80;
-  --text:    #e2e2e2;
-  --muted:   #666666;
-  --border:  #2a2a2a;
-  --hover:   #1f2a1f;
+  --green: #4ade80;
+  --text: #e2e2e2;
+  --muted: #666666;
+  --border: #2a2a2a;
+  --hover: #1f2a1f;
 }
 
 /* ─── Base ─── */
@@ -56,15 +68,19 @@
 
   body {
     @apply bg-bg font-mono text-text;
-    font-size: 13px;
+    font-size: var(--text-sm);
     line-height: 1.6;
     overflow-x: hidden;
   }
 }
 
 /* ─── Utilities ─── */
-@utility main-x {
-  @apply max-w-7xl mx-auto px-12;
+@utility container-x {
+  padding-inline: var(--spacing-x);
+}
+
+@utility section-y {
+  padding-block: var(--spacing-section);
 }
 
 @utility text-body {
@@ -73,14 +89,14 @@
 
 @utility section-title {
   font-family: var(--font-mono);
-  font-size: 22px;
+  font-size: var(--text-lg);
   font-weight: 700;
 }
 
 @utility btn {
-  padding: 10px 24px;
+  padding: 0.625rem 1.5rem;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: var(--text-xs);
   cursor: pointer;
   border: none;
   text-decoration: none;
@@ -90,7 +106,7 @@
 
 @utility btn-primary {
   background: var(--green);
-  color: #111;
+  color: var(--color-on-green);
   font-weight: 700;
 }
 

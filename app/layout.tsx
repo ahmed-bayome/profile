@@ -8,13 +8,12 @@ const jetbrainsMono = JetBrains_Mono({
   variable: '--font-mono',
 });
 
-
 export const metadata: Metadata = {
-  title: 'Ahmed Bayome — Software Developer',
+  title: 'Ahmed Bayome',
   description: 'Software Developer with 2+ years of experience delivering production applications from UI to API.',
 };
 
-const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
+const RootLayout = ({ children }: Readonly<{ children: React.ReactNode; }>) => {
   return (
     <html lang='en' className={jetbrainsMono.variable}>
       <body>
