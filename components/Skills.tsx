@@ -28,15 +28,14 @@ export const Skills = () => (
   <section id='skills' className='container-x section-y border-b border-border'>
     <SectionHeader title='skills' subtitle='what i work with' />
 
-    {/* Skills grid */}
     <div className='grid gap-px bg-border'>
       {skills.map(({ cat, set }) => (
         <div
           key={cat}
           className='bg-bg px-6 py-5 cursor-default transition-colors hover:bg-hover'
         >
-          <div className='text-green text-2xs mb-2 tracking-widest'>{cat}</div>
-          <div className='text-sm text-text'>{set.join(' / ')}</div>
+          <div className='text-green font-bold text-2xs mb-2 tracking-widest'>{cat}</div>
+          <div className='text-sm text-text'>{set.join(' - ')}</div>
         </div>
       ))}
     </div>

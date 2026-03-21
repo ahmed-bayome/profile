@@ -40,7 +40,7 @@
 
   /* Spacing */
   --spacing-section: 3.75rem;
-  --spacing-x: 3rem;
+  --spacing-x: 2rem;
   --spacing-gap: 0.0625rem;
 
   /* Font */
@@ -76,6 +76,8 @@
 
 /* ─── Utilities ─── */
 @utility container-x {
+  max-width: 80rem;
+  margin-inline: auto;
   padding-inline: var(--spacing-x);
 }
 
@@ -114,4 +116,8 @@
   background: transparent;
   border: 1px solid var(--border);
   color: var(--muted);
+}
+
+.responsive {
+  @apply flex flex-col md:flex-row;
 }

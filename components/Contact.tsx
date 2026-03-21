@@ -26,12 +26,12 @@ const contacts: Contact[] = [
     value: 'github.com/ahmedbayome',
     href: 'https://github.com/ahmedbayome',
   },
-  {
-    icon: '↗',
-    label: 'RESUME',
-    value: 'Download PDF',
-    href: '#',
-  },
+  // {
+  //   icon: '↗',
+  //   label: 'RESUME',
+  //   value: 'Download PDF',
+  //   href: '#',
+  // },
 ];
 
 export const Contact = () => (
@@ -41,13 +41,13 @@ export const Contact = () => (
       subtitle="let's connect"
     />
     {/* Contact grid */}
-    <div className='grid grid-cols-2 gap-px bg-border'>
+    <div className='md:grid-cols-2 grid grid-cols-1'>
       {contacts.map(({ icon, label, value, href }) => (
         <div
           key={label}
           className='bg-bg px-8 py-7 flex items-center gap-4 transition-colors hover:bg-hover'
         >
-          <span className='text-green text-base w-5 text-center shrink-0'>{icon}</span>
+          <span className='text-green text-base w-5 text-center'>{icon}</span>
           <div>
             <div className='text-muted text-2xs mb-1'>{label}</div>
             <a
