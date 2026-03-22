@@ -1,13 +1,6 @@
 import { SectionHeader } from './SectionHeader';
-import { get } from '@/utils/api';
-import { GetContactsResponse } from '@/types/api/contacts';
-import { API_ENDPOINTS } from '@/constants/api';
 import { toCamelCase } from '@/utils/objects';
-
-export const getContacts = async () => {
-  const data = await get<GetContactsResponse>(API_ENDPOINTS.CONTACTS);
-  return data;
-};
+import { getContacts } from '@/lib/contacts';
 
 export const Contact = async () => {
   const data = await getContacts();

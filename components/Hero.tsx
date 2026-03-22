@@ -1,15 +1,8 @@
 import { ParticleBackground } from '@/components/ParticleBackground';
 import { ActionButton } from './ActionButton';
 import { TerminalLoader } from '@/components/TerminalLoader';
-import { API_ENDPOINTS } from '@/constants/api';
-import { get } from '@/utils/api';
-import { GetHeroResponse } from '@/types/api/hero';
 import { toCamelCase } from '@/utils/objects';
-
-export const getHero = async () => {
-  const data = await get<GetHeroResponse>(API_ENDPOINTS.HERO);
-  return data;
-};
+import { getHero } from '@/lib/hero';
 
 export const Hero = async () => {
   const data = await getHero();
@@ -31,6 +24,7 @@ export const Hero = async () => {
             href={resumeUrl}
             text='./view_resume'
             type='highlighted'
+            target='blank'
           />
           <ActionButton
             href='#contact'

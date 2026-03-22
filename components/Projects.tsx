@@ -1,14 +1,7 @@
 import Link from 'next/link';
 import { SectionHeader } from './SectionHeader';
-import { get } from '@/utils/api';
-import { GetProjectsResponse } from '@/types/api/projects';
-import { API_ENDPOINTS } from '@/constants/api';
 import { toCamelCase } from '@/utils/objects';
-
-export const getProjects = async () => {
-  const data = await get<GetProjectsResponse>(API_ENDPOINTS.PROJECTS);
-  return data;
-};
+import { getProjects } from '@/lib/projects';
 
 const ImagesMasonry = ({ images }: { images: string[]; }) => {
   const maxLength = 4;

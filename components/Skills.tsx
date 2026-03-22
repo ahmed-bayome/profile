@@ -1,12 +1,5 @@
 import { SectionHeader } from './SectionHeader';
-import { get } from '@/utils/api';
-import { GetSkillsResponse } from '@/types/api/skills';
-import { API_ENDPOINTS } from '@/constants/api';
-
-export const getSkills = async () => {
-  const data = await get<GetSkillsResponse>(API_ENDPOINTS.SKILLS);
-  return data;
-};
+import { getSkills } from '@/lib/skills';
 
 export const Skills = async () => {
   const skills = await getSkills();

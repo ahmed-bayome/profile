@@ -1,11 +1,8 @@
 import { notFound } from 'next/navigation';
 import { ProjectDetail } from '@/components/ProjectDetail';
 import { Footer } from '@/components/Footer';
-import { get } from '@/utils/api';
-import { API_ENDPOINTS } from '@/constants/api';
-import { GetProjectsResponse } from '@/types/api/projects';
 import { toCamelCase } from '@/utils/objects';
-import { getProjects } from '@/components/Projects';
+import { getProjects } from '@/lib/projects';
 
 const ProjectPage = async ({ params }: { params: Promise<{ slug: string; }>; }) => {
   const { slug } = await params;
