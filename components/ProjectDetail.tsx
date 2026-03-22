@@ -1,13 +1,42 @@
 'use client';
 
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ActionButton } from './ActionButton';
 import { CornerBorder } from './CornerBorders';
 import { Project } from '@/types/api/projects';
+import { ImageLightbox } from './ImageLightbox';
 
 export const ProjectDetail = ({ project }: { project: Project; }) => {
   const router = useRouter();
   const { title, description, images, links, stack, challenges } = project;
+
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [lightboxImages, setLightboxImages] = useState<string[]>([]);
+
+  const openLightbox = (index: number) => {
+    setLightboxImages(images);
+    setCurrentImageIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+  };
+
+  const goToPrevImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? lightboxImages.length - 1 : prevIndex - 1
+    );
+  };
+
+  const goToNextImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === lightboxImages.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
   return (
     <div>
       {/* Detail Nav */}
@@ -32,6 +61,7 @@ export const ProjectDetail = ({ project }: { project: Project; }) => {
         <div className='flex gap-3 self-start'>
           {links.map(({ icon, label, url }) => (
             <a
+              key={label}
               href={url}
               target='blank'
               className='flex items-center p-2 font-mono text-xs font-bold border border-border hover:border-green transition-colors'
@@ -48,11 +78,20 @@ export const ProjectDetail = ({ project }: { project: Project; }) => {
         <div className='flex flex-wrap gap-4'>
           {images.map((img, index) => (
             <CornerBorder key={`${img}-${index}`}>
-              <img
-                src={img}
-                alt={img.toString()}
-                className='w-full max-h-100'
-              />
+              <button
+                onClick={() => openLightbox(index)}
+                className='block w-full bg-transparent border-none p-0 cursor-zoom-in group/img relative'
+                aria-label={`Open image ${index + 1} fullscreen`}
+              >
+                <img
+                  src={img}
+                  alt={img.toString()}
+                  className='w-full max-h-100 object-cover transition-opacity duration-200 group-hover/img:opacity-80'
+                />
+                <span className='absolute bottom-2 right-2 font-mono text-2xs text-green opacity-0 group-hover/img:opacity-100 transition-opacity duration-200 bg-bg/70 px-1.5 py-0.5'>
+                  [expand]
+                </span>
+              </button>
             </CornerBorder>
           ))}
         </div>
@@ -96,8 +135,17 @@ export const ProjectDetail = ({ project }: { project: Project; }) => {
           ))}
         </div>
       </div>
-      {/* Next project */}
-
+      {/* Lightbox */}
+      {lightboxOpen && (
+        <ImageLightbox
+          images={lightboxImages}
+          index={currentImageIndex}
+          onClose={closeLightbox}
+          onPrev={goToPrevImage}
+          onNext={goToNextImage}
+          onJump={setCurrentImageIndex}
+        />
+      )}
     </div>
   );
 };

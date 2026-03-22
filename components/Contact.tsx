@@ -19,7 +19,7 @@ export const Contact = async () => {
         subtitle="let's connect"
       />
       {/* Contact grid */}
-      <div className='flex gap-4'>
+      <div className='flex gap-4 flex-wrap'>
         {contacts.map(({ icon, url, label }) => (
           <a target='blank' className='border border-border hover:border-green  p-3 flex items-center gap-2' key={label} href={url}>
             <img
