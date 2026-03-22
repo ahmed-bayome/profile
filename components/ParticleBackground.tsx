@@ -164,14 +164,7 @@ export const ParticleBackground = () => {
   return (
     <canvas
       ref={canvasRef}
-      style={{
-        position: 'absolute',
-        inset: 0,
-        width: '100%',
-        height: '100%',
-        display: 'block',
-        zIndex: 0,
-      }}
+      className='absolute inset-0 w-full h-full z-0'
     />
   );
 };
