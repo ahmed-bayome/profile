@@ -5,11 +5,7 @@ import { get } from '@/utils/api';
 import { API_ENDPOINTS } from '@/constants/api';
 import { GetProjectsResponse } from '@/types/api/projects';
 import { toCamelCase } from '@/utils/objects';
-
-export const getProjects = async () => {
-  const data = await get<GetProjectsResponse>(API_ENDPOINTS.PROJECTS);
-  return data;
-};
+import { getProjects } from '@/components/Projects';
 
 const ProjectPage = async ({ params }: { params: Promise<{ slug: string; }>; }) => {
   const { slug } = await params;
