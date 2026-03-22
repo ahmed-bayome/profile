@@ -50,11 +50,11 @@ export const ProjectDetail = ({ project }: { project: Project; }) => {
       </div>
       {/* Detail Hero */}
       <div className='container-x section-y responsive justify-between gap-8 border-b border-border'>
-        <div>
-          <h1 className='font-mono font-extrabold max-w-150  mb-5 text-text text-title'>
+        <div className='max-w-240  '>
+          <h1 className='font-mono font-extrabold mb-5 text-text text-title'>
             {title}
           </h1>
-          <div className='text-muted max-w-140 leading-[1.8] text-sm'>
+          <div className='text-muted text-sm'>
             {description}
           </div>
         </div>

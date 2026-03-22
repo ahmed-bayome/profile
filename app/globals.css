@@ -29,12 +29,12 @@
   --color-blue: #569CD6;
 
   /* Typography */
-  --text-2xs: 0.6875rem;
-  --text-xs: 0.75rem;
-  --text-sm: 0.8125rem;
-  --text-base: 1rem;
-  --text-md: 1.125rem;
-  --text-lg: 1.375rem;
+  --text-2xs: 0.89375rem;
+  --text-xs: 0.975rem;
+  --text-sm: 1.05625rem;
+  --text-base: 1.3rem;
+  --text-md: 1.4625rem;
+  --text-lg: 1.7875rem;
   --text-hero: clamp(3rem, 8vw, 5.5rem);
   --text-title: clamp(2rem, 6vw, 3.5rem);
 

@@ -20,10 +20,10 @@ export const Hero = async () => {
       <ParticleBackground />
       {/* Text content — z-index 1 */}
       <div className='relative z-1 max-w-2xl'>
-        <h1 className='font-mono font-extrabold leading-none mb-6 text-text text-hero'>
+        <h1 className='font-mono font-extrabold leading-none mb-6 text-text text-title'>
           Hello, I am
           <br />
-          <span className='text-green'>{heroName}</span>
+          <span className='text-green text-hero'>{heroName}</span>
         </h1>
         <p className='max-w-130 text-muted text-sm leading-[1.8] mb-8'>{about}</p>
         <div className='flex gap-4 flex-wrap'>
