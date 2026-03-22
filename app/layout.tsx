@@ -9,8 +9,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Ahmed Bayome',
-  description: 'Software Developer with 2+ years of experience delivering production applications from UI to API.',
+  title: 'Ahmed Bayome'
 };
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode; }>) => {
