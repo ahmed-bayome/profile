@@ -1,8 +1,15 @@
 import type { NextConfig } from 'next';
 
+// next.config.ts
 const nextConfig: NextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
+  // remove the eslint block entirely
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '*.supabase.co',
+      },
+    ],
   },
 };
 
