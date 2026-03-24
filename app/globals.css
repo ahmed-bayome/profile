@@ -66,6 +66,10 @@
     box-sizing: border-box;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-bg font-mono text-text;
     font-size: var(--text-sm);

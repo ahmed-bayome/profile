@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { ActionButton } from './ActionButton';
 import { CornerBorder } from './CornerBorders';
 import { Project } from '@/types/api/projects';
 import { ImageLightbox } from './ImageLightbox';
@@ -64,11 +63,11 @@ export const ProjectDetail = ({ project }: { project: Project; }) => {
               key={label}
               href={url}
               target='blank'
-              className='flex items-center p-2 font-mono text-xs font-bold border border-border hover:border-green transition-colors'
+              className='flex flex-nowrap items-center gap-2 p-2 font-mono text-xs font-bold border border-border hover:border-green transition-colors whitespace-nowrap'
             >
-              {icon && <img src={icon} alt={label} className='w-4 h-4 mr-2' />}
+              {icon && <img src={icon} alt={label} className='w-4 h-4 shrink-0' />}
               {label}
-              <span className='w-2 h-2 ml-4 animate-pulse bg-red-500 rounded-full'></span>
+              <span className='w-2 h-2 shrink-0 animate-pulse bg-red-500 rounded-full'></span>
             </a>
           ))}
         </div>
@@ -80,13 +79,13 @@ export const ProjectDetail = ({ project }: { project: Project; }) => {
             <CornerBorder key={`${img}-${index}`}>
               <button
                 onClick={() => openLightbox(index)}
-                className='block w-full bg-transparent border-none p-0 cursor-zoom-in group/img relative'
+                className='block w-full bg-transparent border-none p-0 cursor-pointer group/img relative'
                 aria-label={`Open image ${index + 1} fullscreen`}
               >
                 <img
                   src={img}
                   alt={img.toString()}
-                  className='w-full max-h-100 object-cover transition-opacity duration-200 group-hover/img:opacity-80'
+                  className='w-full max-h-80 object-cover transition-opacity duration-200 group-hover/img:opacity-80'
                 />
                 <span className='absolute bottom-2 right-2 font-mono text-2xs text-green opacity-0 group-hover/img:opacity-100 transition-opacity duration-200 bg-bg/70 px-1.5 py-0.5'>
                   [expand]
@@ -116,7 +115,7 @@ export const ProjectDetail = ({ project }: { project: Project; }) => {
         <div className='flex flex-col border-t border-border'>
           {challenges.map(({ title, description }, index) => (
             <div
-              key={title}
+              key={title + index}
               className='group flex border-b border-border hover:bg-hover transition-colors duration-200 cursor-default'
             >
               {/* left index sidebar */}

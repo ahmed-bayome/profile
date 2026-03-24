@@ -31,7 +31,7 @@ export const Projects = async () => {
   const projects = await getProjects();
   const camelCaseProjects = toCamelCase(projects);
   return (
-    <section id='projects' className='container-x section-y border-b border-border'>
+    <section id='projects' className='container-x section-y border-b border-border scroll-mt-section'>
       <SectionHeader title='projects' subtitle="things i've built" />
 
       <div className='grid gap-px bg-border'>

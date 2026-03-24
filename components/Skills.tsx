@@ -4,7 +4,7 @@ import { getSkills } from '@/lib/skills';
 export const Skills = async () => {
   const skills = await getSkills();
   return (
-    <section id='skills' className='container-x section-y border-b border-border'>
+    <section id='skills' className='container-x section-y border-b border-border scroll-mt-section'>
       <SectionHeader title='skills' subtitle='what i work with' />
       <div className='grid gap-px bg-border'>
         {skills.map(({ id, category, skills }) => (
