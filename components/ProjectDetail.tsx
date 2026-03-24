@@ -42,9 +42,9 @@ export const ProjectDetail = ({ project }: { project: Project; }) => {
       <div className='container-x flex py-5 border-b border-border bg-bg z-10'>
         <button
           onClick={router.back}
-          className='text-muted text-xs flex items-center gap-2 transition-colors hover:text-green border-none bg-transparent font-mono cursor-pointer'
+          className='text-muted text-sm flex items-center gap-2 transition-colors hover:text-green border-none bg-transparent font-mono cursor-pointer'
         >
-          ← ./projects
+          ← projects
         </button>
       </div>
       {/* Detail Hero */}

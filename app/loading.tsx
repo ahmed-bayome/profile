@@ -46,12 +46,7 @@ const Loading = () => {
         </div>
       </div>
 
-      {/* ── Bottom edge hint ── */}
-      <div className='absolute bottom-8 left-0 right-0 flex justify-center'>
-        <div className='w-6 h-10 border-2 border-border rounded-full flex justify-center pt-2'>
-          <div className='w-1 h-2 bg-surface-2 rounded-full'></div>
-        </div>
-      </div>
+
     </div>
   );
 };

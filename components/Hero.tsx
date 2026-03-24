@@ -21,15 +21,13 @@ export const Hero = async () => {
         <p className='max-w-130 text-muted text-sm mb-8'>{about}</p>
         <div className='flex gap-4 flex-wrap'>
           <ActionButton
-            href={resumeUrl}
-            text='./view_resume'
-            type='highlighted'
-            target='blank'
+            href='#contact'
+            text='CONTACT_ME'
           />
           <ActionButton
-            href='#contact'
-            text='./get_in_touch'
-            type='dimmed'
+            href={resumeUrl}
+            text='VIEW_RESUME'
+            target='blank'
           />
         </div>
       </div>
