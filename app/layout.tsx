@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { JetBrains_Mono } from 'next/font/google';
 import { Navbar } from '@/components/Navbar';
+import { RealtimeUpdater } from '@/components/RealtimeUpdater';
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
@@ -20,6 +21,7 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode; }>) => {
       <body>
         <Navbar />
         {children}
+        <RealtimeUpdater />
       </body>
     </html>
   );
