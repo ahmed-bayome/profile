@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   title: 'Ahmed Bayome'
 };
 
+export const dynamic = 'force-dynamic';
+
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode; }>) => {
   return (
     <html lang='en' className={jetbrainsMono.variable}>
