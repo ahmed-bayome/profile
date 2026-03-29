@@ -46,9 +46,9 @@ export const BlogDetail = ({ blog }: { blog: Blog; }) => {
   const { title, description, tags, created_at, content } = blog;
 
   return (
-    <div className='container-x'>
+    <main>
       {/* Hero */}
-      <div className='border-b border-border'>
+      <div className='border-b border-border container-x'>
         <div className='py-10'>
           <p className='text-green text-2xs mb-4 font-mono'>
             // {formatDate(created_at)}
@@ -73,9 +73,9 @@ export const BlogDetail = ({ blog }: { blog: Blog; }) => {
       </div>
 
       {/* Content */}
-      <div className='py-12 max-w-3xl mx-auto'>
+      <div className='py-12 max-w-3xl mx-auto container-x'>
         {content.map(renderBlock)}
       </div>
-    </div>
+    </main>
   );
 };
