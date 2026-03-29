@@ -28,14 +28,13 @@ const ImagesMasonry = ({ images }: { images: string[]; }) => {
 };
 
 export const Projects = async () => {
-  const projects = await getProjects();
-  const camelCaseProjects = toCamelCase(projects);
+  const data = await getProjects();
+  const projects = toCamelCase(data);
   return (
     <section id='projects' className='container-x section-y border-b border-border scroll-mt-section'>
       <SectionHeader title='projects' subtitle="things i've built" />
-
       <div className='grid gap-px bg-border'>
-        {camelCaseProjects.map(({ id, slug, title, description, tags, images }, index) => (
+        {projects.map(({ id, slug, title, description, tags, images }, index) => (
           <Link
             key={id}
             href={`/projects/${slug}`}
@@ -45,7 +44,7 @@ export const Projects = async () => {
               <div className='flex flex-col justify-between'>
                 <div>
                   <p className='text-green text-2xs mb-4'>// 0{index + 1}</p>
-                  <p className='font-mono text-md font-bold mb-3'>{title}</p>
+                  <p className='font-mono text-md font-bold mb-3 line-clamp-1'>{title}</p>
                   <p className='line-clamp-1 text-muted text-xs mb-5'>{description}</p>
                   <div className='flex gap-2 flex-wrap'>
                     {tags.map((tag) => (

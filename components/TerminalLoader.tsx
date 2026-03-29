@@ -115,20 +115,17 @@ export const TerminalLoader = ({
   }, [steps]);
 
   return (
-    <div className='scrollbar-none bg-surface border border-border'>
-      {/* titlebar */}
+    <div className='scrollbar-none bg-surface border border-border flex flex-col'>
       <div className='flex items-center gap-1.5 px-3 py-2 bg-bg-2 border-b border-border'>
         <div className='w-2.5 h-2.5 rounded-full bg-[#ff5f57]' />
         <div className='w-2.5 h-2.5 rounded-full bg-[#febc2e]' />
         <div className='w-2.5 h-2.5 rounded-full bg-[#28c840]' />
         <span className='text-[10px] text-muted ml-2 tracking-wide'>{title}</span>
       </div>
-      {/* body */}
       <div
         ref={bodyRef}
-        className='overflow-y-auto [&::-webkit-scrollbar]:hidden p-5 flex flex-col gap-1.5 min-w-80 min-h-50 max-h-90'
+        className='overflow-y-auto [&::-webkit-scrollbar]:hidden p-5 flex flex-col gap-1.5 aspect-square h-75'
       />
     </div>
-
   );
 };

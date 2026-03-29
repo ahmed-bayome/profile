@@ -5,10 +5,12 @@ import { useState, useEffect, useRef } from 'react';
 import { ComponentText } from '@/components/ComponentText';
 
 const navs = [
-  { nav: './skills', href: '/#skills' },
+  // { nav: './skills', href: '/#skills' },
   { nav: './projects', href: '/#projects' },
+  { nav: './blogs', href: '/#blogs' },
   { nav: './contact', href: '/#contact' },
 ];
+
 
 export const Navbar = () => {
   const [open, setOpen] = useState(false);

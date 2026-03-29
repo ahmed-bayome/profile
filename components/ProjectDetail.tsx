@@ -38,15 +38,7 @@ export const ProjectDetail = ({ project }: { project: Project; }) => {
 
   return (
     <div>
-      {/* Detail Nav */}
-      <div className='container-x flex py-5 border-b border-border bg-bg z-10'>
-        <button
-          onClick={router.back}
-          className='text-muted text-sm flex items-center gap-2 transition-colors hover:text-green border-none bg-transparent font-mono cursor-pointer'
-        >
-          ← projects
-        </button>
-      </div>
+
       {/* Detail Hero */}
       <div className='container-x section-y responsive justify-between gap-8 border-b border-border'>
         <div className='max-w-240  '>
@@ -110,7 +102,7 @@ export const ProjectDetail = ({ project }: { project: Project; }) => {
           ))}
         </div>
       </div>
-      <div className='container-x section-y border-b border-border'>
+      <div className='container-x section-y'>
         <p className='text-green text-xs mb-6'>// challenges_&_learnings</p>
         <div className='flex flex-col border-t border-border'>
           {challenges.map(({ title, description }, index) => (

@@ -6,7 +6,7 @@ export const Contact = async () => {
   const data = await getContacts();
   const contacts = toCamelCase(data);
   return (
-    <section id='contact' className='container-x section-y border-b border-border scroll-mt-section'>
+    <section id='contact' className='container-x section-y scroll-mt-section'>
       <SectionHeader
         title='contact'
         subtitle="let's connect"

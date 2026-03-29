@@ -4,7 +4,7 @@ import { TerminalLoader } from '@/components/TerminalLoader';
 import { toCamelCase } from '@/utils/objects';
 import { getHero } from '@/lib/hero';
 
-const formatBoldText = (text: string) => {
+const formatText = (text: string) => {
   const parts = text.split(/\{([\s\S]*?)\}/g);
 
   return parts.map((part, index) => {
@@ -29,7 +29,7 @@ export const Hero = async () => {
           <br />
           <span className='text-green text-hero'>{heroName}</span>
         </h1>
-        <p className='max-w-130 text-text text-sm mb-8'>{formatBoldText(about)}</p>
+        <p className='max-w-130 text-text text-sm mb-10'>{formatText(about)}</p>
         <div className='flex gap-4 flex-wrap'>
           <ActionButton
             href='#contact'

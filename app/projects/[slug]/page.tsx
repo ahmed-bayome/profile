@@ -6,11 +6,10 @@ import { getProjects } from '@/lib/projects';
 
 const ProjectPage = async ({ params }: { params: Promise<{ slug: string; }>; }) => {
   const { slug } = await params;
-  const projects = await getProjects();
-  const camelCaseProjects = toCamelCase(projects);
-  const project = camelCaseProjects.find((p) => p.slug === slug);
+  const data = await getProjects();
+  const projects = toCamelCase(data);
+  const project = projects.find((p) => p.slug === slug);
   if (!project) notFound();
-
   return (
     <div>
       <ProjectDetail project={project} />
