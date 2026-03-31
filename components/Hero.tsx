@@ -39,6 +39,7 @@ export const Hero = async () => {
             href={resumeUrl}
             text='VIEW_RESUME'
             target='blank'
+            type='secondary'
           />
         </div>
       </div>

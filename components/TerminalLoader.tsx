@@ -115,8 +115,8 @@ export const TerminalLoader = ({
   }, [steps]);
 
   return (
-    <div className='scrollbar-none bg-surface border border-border flex flex-col'>
-      <div className='flex items-center gap-1.5 px-3 py-2 bg-bg-2 border-b border-border'>
+    <div className='scrollbar-none rounded-xl overflow-hidden bg-surface border border-border flex flex-col'>
+      <div className='flex items-center bg-border gap-1.5 px-3 py-2 border-b border-border'>
         <div className='w-2.5 h-2.5 rounded-full bg-[#ff5f57]' />
         <div className='w-2.5 h-2.5 rounded-full bg-[#febc2e]' />
         <div className='w-2.5 h-2.5 rounded-full bg-[#28c840]' />

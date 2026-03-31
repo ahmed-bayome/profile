@@ -1,5 +1,4 @@
 import { Hero } from '@/components/Hero';
-// import { Skills } from '@/components/Skills';
 import { Projects } from '@/components/Projects';
 import { Blogs } from '@/components/Blogs';
 import { Contact } from '@/components/Contact';
@@ -12,7 +11,6 @@ const Home = () => {
     <main>
       <ScrollToHash />
       <Hero />
-      {/* <Skills /> */}
       <Projects />
       <Blogs />
       <Contact />

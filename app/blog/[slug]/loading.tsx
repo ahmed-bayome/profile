@@ -20,7 +20,6 @@ const Loading = () => (
     </div>
 
     <div className='container-x py-12 max-w-3xl mx-auto'>
-      <div className='w-24 h-3 bg-green/20 rounded-sm mb-8' />
       {/* Content blocks */}
       <div className='space-y-4'>
         <div className='w-1/2 h-7 bg-border/80 rounded-sm' />

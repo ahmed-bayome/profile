@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 
 const GREENS = ['#4ade80', '#22c55e', '#86efac', '#16a34a'];
-const CHARS = ['<', '/>', '{', '}', '//', '=', '()', '[]', '&&', '!=', '++', '01', '10'];
+const CHARS = ['<>', '</>', '{', '}', '//', '=', '()', '[]', '&&', '!=', '++', '01', '10'];
 
 type ParticleType = {
   x: number;
