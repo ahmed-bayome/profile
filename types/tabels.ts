@@ -5,7 +5,7 @@ type Hero = {
   about: string;
 };
 
-type Projects = {
+export type Project = {
   id: number;
   slug: string;
   title: string;
@@ -27,14 +27,14 @@ type Projects = {
   }[];
 };
 
-type Contacts = {
+type Contact = {
   id: number;
   icon: string;
   label: string;
   url: string;
 };
 
-type Blogs = {
+type Blog = {
   id: number;
   slug: string;
   title: string;
@@ -45,10 +45,10 @@ type Blogs = {
 };
 
 export type TableTypes = {
-  projects: Projects[];
-  blogs: Blogs[];
+  projects: Project[];
+  blogs: Blog[];
   hero: Hero[];
-  contacts: Contacts[];
+  contacts: Contact[];
 };
 
 export type TablesWithSlug = {

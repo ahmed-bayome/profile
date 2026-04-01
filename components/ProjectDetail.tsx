@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { CornerBorder } from './CornerBorders';
-import { Project } from '@/types/api/projects';
+import type { Project } from '@/types/tabels';
 import { ImageLightbox } from './ImageLightbox';
 
 export const ProjectDetail = ({ project }: { project: Project; }) => {
