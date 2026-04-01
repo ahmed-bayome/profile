@@ -28,7 +28,7 @@ const defaultSteps: StepType[] = [
 ];
 
 export const TerminalLoader = ({
-  title = 'ahmed_bayome — portfolio',
+  title = 'users/ahmed-bayome/portfolio',
   steps = defaultSteps,
 }: TerminalLoaderProps) => {
   const bodyRef = useRef<HTMLDivElement>(null);
@@ -38,9 +38,6 @@ export const TerminalLoader = ({
     if (!body) return;
 
     const timeouts: ReturnType<typeof setTimeout>[] = [];
-
-    // find the last step delay to know when we're done
-    const lastDelay = Math.max(...steps.map((s) => s.delay));
 
     steps.forEach((step) => {
       const t = setTimeout(() => {

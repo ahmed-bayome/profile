@@ -1,13 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { CornerBorder } from './CornerBorders';
 import { Project } from '@/types/api/projects';
 import { ImageLightbox } from './ImageLightbox';
 
 export const ProjectDetail = ({ project }: { project: Project; }) => {
-  const router = useRouter();
   const { title, description, images, links, stack, challenges } = project;
 
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -37,8 +35,7 @@ export const ProjectDetail = ({ project }: { project: Project; }) => {
   };
 
   return (
-    <div>
-
+    <main>
       {/* Detail Hero */}
       <div className='container-x section-y responsive justify-between gap-8 border-b border-border'>
         <div className='max-w-240'>
@@ -137,6 +134,6 @@ export const ProjectDetail = ({ project }: { project: Project; }) => {
           onJump={setCurrentImageIndex}
         />
       )}
-    </div>
+    </main>
   );
 };

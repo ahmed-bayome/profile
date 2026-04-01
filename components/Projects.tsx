@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { SectionHeader } from './SectionHeader';
-import { toCamelCase } from '@/utils/objects';
-import { getProjects } from '@/lib/projects';
+import { supabaseProvider } from '@/lib/supabase';
 
 const ImagesMasonry = ({ images }: { images: string[]; }) => {
   const maxLength = 4;
@@ -28,8 +27,7 @@ const ImagesMasonry = ({ images }: { images: string[]; }) => {
 };
 
 export const Projects = async () => {
-  const data = await getProjects();
-  const projects = toCamelCase(data);
+  const projects = await supabaseProvider.get('projects');
   return (
     <section id='projects' className='container-x section-y border-b border-border scroll-mt-section'>
       <SectionHeader title='projects' subtitle="things i've built" />

@@ -1,10 +1,8 @@
 import { SectionHeader } from './SectionHeader';
-import { toCamelCase } from '@/utils/objects';
-import { getContacts } from '@/lib/contacts';
+import { supabaseProvider } from '@/lib/supabase';
 
 export const Contact = async () => {
-  const data = await getContacts();
-  const contacts = toCamelCase(data);
+  const contacts = await supabaseProvider.get('contacts');
   return (
     <section id='contact' className='container-x section-y scroll-mt-section'>
       <SectionHeader
