@@ -1,6 +1,6 @@
-import { ParticleBackground } from '@/components/ParticleBackground';
-import { ActionButton } from './ActionButton';
-import { TerminalLoader } from '@/components/TerminalLoader';
+import { ParticleBackground } from '@/components/common/ParticleBackground';
+import { ActionButton } from '../common/ActionButton';
+import { TerminalLoader } from '@/components/common/TerminalLoader';
 import { supabaseProvider } from '@/lib/supabase';
 import Markdown from 'react-markdown';
 import type { Components } from 'react-markdown';

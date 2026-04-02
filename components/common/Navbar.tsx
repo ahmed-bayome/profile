@@ -2,10 +2,9 @@
 
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
-import { ComponentText } from '@/components/ComponentText';
+import { ComponentText } from '@/components/common/ComponentText';
 
 const navs = [
-  // { nav: './skills', href: '/#skills' },
   { nav: './projects', href: '/#projects' },
   { nav: './blogs', href: '/#blogs' },
   { nav: './contact', href: '/#contact' },

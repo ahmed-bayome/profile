@@ -1,22 +1,19 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { JetBrains_Mono } from 'next/font/google';
-import { Navbar } from '@/components/Navbar';
+import { Navbar } from '@/components/common/Navbar';
+import { doMetadata } from '@/utils/seo';
 
-
-export const dynamic = 'force-dynamic';
-export const metadata: Metadata = {
-  title: 'Ahmed Bayome',
-  description: 'Frontend Engineer',
-
-
-  twitter: {
-    card: 'summary_large_image',
-  },
-};
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--font-mono',
+});
+
+export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = doMetadata({
+  title: 'Ahmed Bayome - Portfolio',
+  description: 'Welcome to the portfolio of Ahmed Bayome.',
 });
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode; }>) => (

@@ -1,4 +1,4 @@
-import { SectionHeader } from './SectionHeader';
+import { SectionHeader } from '../common/SectionHeader';
 import { supabaseProvider } from '@/lib/supabase';
 
 export const Contact = async () => {

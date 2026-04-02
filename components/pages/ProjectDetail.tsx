@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { CornerBorder } from './CornerBorders';
+import { CornerBorder } from '../common/CornerBorders';
 import type { Project } from '@/types/tabels';
-import { ImageLightbox } from './ImageLightbox';
+import { ImageLightbox } from '../common/ImageLightbox';
 
 export const ProjectDetail = ({ project }: { project: Project; }) => {
   const { title, description, images, links, stack, challenges } = project;

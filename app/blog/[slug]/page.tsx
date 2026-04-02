@@ -3,6 +3,19 @@ import { notFound } from 'next/navigation';
 import { formatDate } from '@/utils/text';
 import type { Components } from 'react-markdown';
 import Markdown from 'react-markdown';
+import { Metadata } from 'next';
+import { doMetadata } from '@/utils/seo';
+
+export const generateMetadata = async ({ params }: { params: Promise<{ slug: string; }>; }): Promise<Metadata> => {
+  const { slug } = await params;
+  const blog = await supabaseProvider.getBySlug('blogs', slug);
+  if (!blog) notFound();
+  const { title, description } = blog;
+  return doMetadata({
+    title,
+    description
+  });
+};
 
 const markdownComponents: Components = {
   hr: () => <hr className='border-border my-8' />,
