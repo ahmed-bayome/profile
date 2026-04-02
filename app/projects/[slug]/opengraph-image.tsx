@@ -4,13 +4,8 @@ import { join } from 'path';
 import { supabaseProvider } from '@/lib/supabase';
 
 export const runtime = 'nodejs';
-
-export const size = {
-  width: 1200,
-  height: 630,
-};
-
 export const contentType = 'image/png';
+export const size = { width: 1200, height: 630 };
 
 const Image = async ({ params }: { params: Promise<{ slug: string; }>; }) => {
   const { slug } = await params;
@@ -27,6 +22,10 @@ const Image = async ({ params }: { params: Promise<{ slug: string; }>; }) => {
   const tags: string[] = project?.tags ?? [];
   const stack: { name: string; icon: string; }[] = project?.stack ?? [];
 
+  const shortDesc = description.length > 100 ? description.slice(0, 100) + '...' : description;
+  const titleFontSize = title.length > 40 ? 44 : title.length > 25 ? 52 : 62;
+  const stackItems = stack.slice(0, 4);
+
   return new ImageResponse(
     (
       <div
@@ -34,186 +33,283 @@ const Image = async ({ params }: { params: Promise<{ slug: string; }>; }) => {
           display: 'flex',
           width: '100%',
           height: '100%',
-          background: '#1a1a1a',
+          background: '#111111',
           fontFamily: 'JetBrainsMono',
           position: 'relative',
           overflow: 'hidden',
         }}
       >
-        {/* Grid background */}
+        {/* Dot-grid background */}
         <div
           style={{
             position: 'absolute',
             inset: 0,
-            backgroundImage:
-              'linear-gradient(rgba(74,222,128,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(74,222,128,0.04) 1px, transparent 1px)',
-            backgroundSize: '40px 40px',
+            backgroundImage: 'radial-gradient(circle, #222 1px, transparent 1px)',
+            backgroundSize: '28px 28px',
             display: 'flex',
+            opacity: 0.7,
           }}
         />
 
-        {/* Bottom accent bar */}
+        {/* Green radial glow — bottom-left */}
         <div
           style={{
             position: 'absolute',
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: 4,
-            background: 'linear-gradient(to right, #4ade80, transparent)',
-            display: 'flex',
-          }}
-        />
-
-        {/* Glow top-right */}
-        <div
-          style={{
-            position: 'absolute',
-            top: -100,
-            right: -60,
-            width: 350,
-            height: 350,
+            bottom: -80,
+            left: -80,
+            width: 520,
+            height: 520,
             borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(74,222,128,0.13) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(74,222,128,0.11) 0%, transparent 65%)',
             display: 'flex',
           }}
         />
 
-        {/* Stack pills - decorative right side */}
-        {stack.length > 0 && (
+        {/* Dim glow top-right */}
+        <div
+          style={{
+            position: 'absolute',
+            top: -60,
+            right: 200,
+            width: 300,
+            height: 300,
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(74,222,128,0.05) 0%, transparent 70%)',
+            display: 'flex',
+          }}
+        />
+
+        {/* Left accent strip */}
+        <div
+          style={{
+            position: 'absolute',
+            left: 0,
+            top: 0,
+            bottom: 0,
+            width: 3,
+            background: 'linear-gradient(to bottom, transparent, #4ade80 30%, #4ade80 70%, transparent)',
+            display: 'flex',
+          }}
+        />
+
+        {/* ── Right panel ── */}
+        <div
+          style={{
+            position: 'absolute',
+            right: 0,
+            top: 0,
+            bottom: 0,
+            width: 264,
+            borderLeft: '1px solid #1c1c1c',
+            background: '#0d0d0d',
+            display: 'flex',
+            flexDirection: 'column',
+            padding: '40px 24px',
+          }}
+        >
+          {/* Panel header */}
           <div
             style={{
-              position: 'absolute',
-              right: 72,
-              top: '50%',
               display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'flex-end',
-              gap: 10,
-              transform: 'translateY(-50%)',
+              alignItems: 'center',
+              gap: 8,
+              marginBottom: 28,
+              paddingBottom: 18,
+              borderBottom: '1px solid #1c1c1c',
             }}
           >
-            {stack.slice(0, 5).map((item, i) => (
-              <div
-                key={i}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 8,
-                  background: '#1e1e1e',
-                  border: '1px solid #2a2a2a',
-                  padding: '10px 18px',
-                  opacity: 1 - i * 0.18,
-                }}
-              >
-                <span style={{ fontSize: 13, color: '#e2e2e2', fontWeight: 400 }}>
-                  {item.name}
-                </span>
-              </div>
-            ))}
+            <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#4ade80', display: 'flex' }} />
+            <span style={{ fontSize: 10, color: '#3a3a3a', letterSpacing: 2 }}>TECH_STACK</span>
           </div>
-        )}
 
-        {/* Main content */}
+          {/* Stack list */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            {stackItems.length > 0
+              ? stackItems.map((item, i) => (
+                <div
+                  key={i}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 10,
+                    padding: '10px 14px',
+                    background: '#131313',
+                    border: '1px solid #1c1c1c',
+                    opacity: 1 - i * 0.14,
+                  }}
+                >
+                  <div
+                    style={{
+                      width: 5,
+                      height: 5,
+                      background: '#4ade80',
+                      opacity: 0.5,
+                      display: 'flex',
+                      flexShrink: 0,
+                    }}
+                  />
+                  <span style={{ fontSize: 12, color: '#b0bec5', fontWeight: 400 }}>
+                    {item.name}
+                  </span>
+                </div>
+              ))
+              : /* Placeholder rows when no stack */
+              [0, 1, 2].map((i) => (
+                <div
+                  key={i}
+                  style={{
+                    display: 'flex',
+                    height: 38,
+                    background: '#131313',
+                    border: '1px solid #1c1c1c',
+                    opacity: 0.3 - i * 0.08,
+                  }}
+                />
+              ))}
+          </div>
+
+          {/* AB badge at bottom */}
+          <div
+            style={{
+              marginTop: 'auto',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 10,
+              paddingTop: 20,
+              borderTop: '1px solid #1c1c1c',
+            }}
+          >
+            <div
+              style={{
+                width: 32,
+                height: 32,
+                background: '#4ade80',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: 11,
+                fontWeight: 800,
+                color: '#111',
+                flexShrink: 0,
+              }}
+            >
+              AB
+            </div>
+            <span style={{ fontSize: 10, color: '#3a3a3a' }}>ahmed-bayome.dev</span>
+          </div>
+        </div>
+
+        {/* ── Main content ── */}
         <div
           style={{
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
-            padding: '56px 72px',
-            width: '100%',
+            padding: '48px 52px 48px 56px',
+            width: 936,
             position: 'relative',
           }}
         >
-          {/* Top */}
+          {/* Top breadcrumb */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: '#4ade80', fontSize: 14 }}>
-              <span style={{ color: '#666' }}>//</span>
-              <span>ahmed-bayome.dev</span>
-              <span style={{ color: '#2a2a2a', margin: '0 4px' }}>/</span>
-              <span style={{ color: '#666' }}>projects</span>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <span style={{ fontSize: 11, color: '#4ade80', letterSpacing: 1 }}>~/projects</span>
+              <span style={{ fontSize: 11, color: '#2a2a2a', margin: '0 8px' }}>/</span>
+              <span
+                style={{
+                  fontSize: 11,
+                  color: '#444',
+                  maxWidth: 300,
+                  overflow: 'hidden',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {slug}
+              </span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <div
+                style={{
+                  width: 7,
+                  height: 7,
+                  borderRadius: '50%',
+                  background: '#4ade80',
+                  display: 'flex',
+                }}
+              />
+              <span style={{ fontSize: 10, color: '#4ade80', letterSpacing: 2 }}>LIVE</span>
             </div>
           </div>
 
-          {/* Middle */}
+          {/* Center: tags + title + divider + desc */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-            {/* Tags */}
             {tags.length > 0 && (
               <div style={{ display: 'flex', gap: 8 }}>
-                {tags.slice(0, 4).map((tag) => (
-                  <span
+                {tags.slice(0, 3).map((tag) => (
+                  <div
                     key={tag}
                     style={{
-                      border: '1px solid #2a2a2a',
-                      color: '#666',
-                      fontSize: 12,
-                      padding: '3px 12px',
                       display: 'flex',
+                      padding: '4px 14px',
+                      border: '1px solid #222',
+                      fontSize: 11,
+                      color: '#444',
+                      letterSpacing: 1,
                     }}
                   >
                     {tag}
-                  </span>
+                  </div>
                 ))}
               </div>
             )}
 
-            {/* Title */}
             <div
               style={{
-                fontSize: title.length > 30 ? 48 : 64,
+                fontSize: titleFontSize,
                 fontWeight: 800,
-                color: '#e2e2e2',
-                lineHeight: 1.1,
-                letterSpacing: '-1.5px',
-                maxWidth: 740,
+                color: '#eaeaea',
+                lineHeight: 1.06,
+                letterSpacing: '-1px',
+                maxWidth: 800,
               }}
             >
               {title}
             </div>
 
-            {/* Description */}
+            <div style={{ width: 48, height: 2, background: '#4ade80', display: 'flex' }} />
+
             <div
               style={{
-                fontSize: 17,
-                color: '#8a96a3',
+                fontSize: 16,
+                color: '#5a6a75',
                 fontWeight: 400,
-                maxWidth: 620,
-                lineHeight: 1.5,
+                maxWidth: 680,
+                lineHeight: 1.65,
               }}
             >
-              {description.length > 110 ? description.slice(0, 110) + '...' : description}
+              {shortDesc}
             </div>
           </div>
 
-          {/* Bottom */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <span
-              style={{
-                background: '#4ade80',
-                color: '#111',
-                fontSize: 13,
-                fontWeight: 800,
-                padding: '5px 16px',
-                display: 'flex',
-              }}
-            >
-              VIEW_PROJECT
-            </span>
+          {/* Bottom CTA */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
             <div
               style={{
-                width: 40,
-                height: 40,
-                background: '#4ade80',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: 14,
-                fontWeight: 800,
-                color: '#111',
+                gap: 10,
+                padding: '10px 22px',
+                background: '#4ade80',
               }}
             >
-              AB
+              <span style={{ fontSize: 12, fontWeight: 800, color: '#111', letterSpacing: 2 }}>
+                VIEW_PROJECT
+              </span>
+              <span style={{ fontSize: 14, color: '#111', fontWeight: 800 }}>→</span>
             </div>
+            <span style={{ fontSize: 11, color: '#2a2a2a' }}>
+              ahmed-bayome.dev/projects/{slug}
+            </span>
           </div>
         </div>
       </div>

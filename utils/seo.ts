@@ -8,13 +8,12 @@ export const doMetadata = (props: { title: string; description: string; }): Meta
     description,
     openGraph: {
       title,
-      description,
-      // images: [`/api/og?title=${encodeURIComponent(title)}`],
+      description
     },
     twitter: {
       card: 'summary_large_image',
       title,
-      description,
-    },
+      description
+    }
   };
 };
