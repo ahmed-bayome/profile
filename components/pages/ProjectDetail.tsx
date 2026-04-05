@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { CornerBorder } from '../common/CornerBorders';
 import type { Project } from '@/types/tabels';
 import { ImageLightbox } from '../common/ImageLightbox';
 
@@ -62,25 +61,23 @@ export const ProjectDetail = ({ project }: { project: Project; }) => {
         </div>
       </div>
       <div className='container-x section-y border-b border-border'>
-        <p className='text-green text-xs mb-3'>// images_preview</p>
-        <div className='flex flex-wrap gap-4'>
+        <p className='text-green text-xs mb-6'>// images_preview</p>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2'>
           {images.map((img, index) => (
-            <CornerBorder key={`${img}-${index}`}>
-              <button
-                onClick={() => openLightbox(index)}
-                className='block w-full bg-transparent border-none p-0 cursor-pointer group/img relative'
-                aria-label={`Open image ${index + 1} fullscreen`}
-              >
-                <img
-                  src={img}
-                  alt={img.toString()}
-                  className='w-full max-h-80 object-cover transition-opacity duration-200 group-hover/img:opacity-80'
-                />
-                <span className='absolute bottom-2 right-2 font-mono text-2xs text-green opacity-0 group-hover/img:opacity-100 transition-opacity duration-200 bg-bg/70 px-1.5 py-0.5'>
-                  [expand]
-                </span>
-              </button>
-            </CornerBorder>
+            <button
+              key={`${img}-${index}`}
+              onClick={() => openLightbox(index)}
+              className='cursor-pointer group/img relative border-4 border-border hover:border-green transition-colors duration-200'
+            >
+              <img
+                src={img}
+                alt={img.toString()}
+                className='w-full object-cover transition-opacity duration-200 group-hover/img:opacity-80'
+              />
+              <span className='absolute bottom-2 right-2 font-mono text-2xs text-green opacity-0 group-hover/img:opacity-100 transition-opacity duration-200 bg-bg/70 px-1.5 py-0.5'>
+                [expand]
+              </span>
+            </button>
           ))}
         </div>
       </div>
