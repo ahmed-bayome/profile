@@ -19,7 +19,6 @@ const Image = async ({ params }: { params: Promise<{ slug: string; }>; }) => {
 
   const title = blog?.title ?? 'Blog Post';
   const description = blog?.description ?? 'A technical write-up by Ahmed Bayome.';
-  const tags: string[] = blog?.tags ?? [];
   const date = blog?.createdAt
     ? new Date(blog.createdAt).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -125,40 +124,6 @@ const Image = async ({ params }: { params: Promise<{ slug: string; }>; }) => {
           >
             <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#4ade80', display: 'flex' }} />
             <span style={{ fontSize: 10, color: '#3a3a3a', letterSpacing: 2 }}>BLOG_POST</span>
-          </div>
-
-          {/* Tags list */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            {tags.length > 0
-              ? tags.slice(0, 5).map((tag, i) => (
-                <div
-                  key={i}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 10,
-                    padding: '10px 14px',
-                    background: '#131313',
-                    border: '1px solid #1c1c1c',
-                    opacity: 1 - i * 0.14,
-                  }}
-                >
-                  <span style={{ fontSize: 10, color: '#4ade80', opacity: 0.6 }}>#</span>
-                  <span style={{ fontSize: 12, color: '#b0bec5' }}>{tag}</span>
-                </div>
-              ))
-              : [0, 1, 2].map((i) => (
-                <div
-                  key={i}
-                  style={{
-                    display: 'flex',
-                    height: 38,
-                    background: '#131313',
-                    border: '1px solid #1c1c1c',
-                    opacity: 0.3 - i * 0.08,
-                  }}
-                />
-              ))}
           </div>
 
           {/* Date badge */}
