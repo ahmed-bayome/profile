@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import type { Project } from '@/types/tabels';
+import type { Project } from '@/types/tables';
 import { ImageLightbox } from '../common/ImageLightbox';
 
 export const ProjectDetail = ({ project }: { project: Project; }) => {

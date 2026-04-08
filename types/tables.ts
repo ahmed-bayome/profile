@@ -39,7 +39,6 @@ type Blog = {
   slug: string;
   title: string;
   description: string;
-  tags: string[];
   created_at: string;
   content: string;
 };

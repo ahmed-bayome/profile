@@ -3,12 +3,12 @@ import { AnchorHTMLAttributes } from 'react';
 export const ActionButton = ({
   text,
   type,
-  icon,
+  Icon,
   ...props
 }: {
   text: any;
   type?: 'secondary';
-  icon?: string;
+  Icon?: any;
 } & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'className'>) => {
   const isPrimary = !type || type !== 'secondary';
 
@@ -23,7 +23,7 @@ export const ActionButton = ({
           'transition-all duration-300 no-underline select-none',
           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green/60',
           'overflow-hidden',
-
+          'backdrop-blur-sm',
           isPrimary
             ? [
               // primary — filled with glow
@@ -36,6 +36,7 @@ export const ActionButton = ({
               // secondary — ghost with dashed border
               'bg-transparent text-muted border border-dashed border-border',
               'hover:text-green hover:border-green/60 hover:bg-green/5',
+
             ].join(' '),
         ].join(' ')
       }
@@ -67,8 +68,9 @@ export const ActionButton = ({
 
 
 
-
+      {Icon && <Icon className="w-3.5 h-3.5" />}
       <span className='relative z-10'>{text}</span>
+
     </a >
   );
 };

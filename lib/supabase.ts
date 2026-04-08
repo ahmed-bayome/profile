@@ -1,28 +1,28 @@
 import { createClient } from '@supabase/supabase-js';
 import { NEXT_PUBLIC_SUPABASE_URL, SUPABASE_SECRET_KEY } from '@/constants/api';
-import { TableTypes, TablesWithSlug } from '../types/tabels';
+import type { TableTypes, TablesWithSlug } from '@/types/tables';
 import { toCamelCase } from '@/utils/objects';
 
-const supabase = createClient(
+const supabaseClient = createClient(
   NEXT_PUBLIC_SUPABASE_URL,
   SUPABASE_SECRET_KEY,
 );
 
-class SupabaseProvider {
+class Supabase {
   get = async <T extends keyof TableTypes>(table: T) => {
-    const { data, error } = await supabase.from(table).select('*');
+    const { data, error } = await supabaseClient.from(table).select('*');
     if (error) throw error;
     return toCamelCase(data as TableTypes[T]);
   };
 
   getSingle = async <T extends keyof TableTypes>(table: T) => {
-    const { data, error } = await supabase.from(table).select('*').single();
+    const { data, error } = await supabaseClient.from(table).select('*').single();
     if (error) throw error;
     return toCamelCase(data as TableTypes[T][number]);
   };
 
   getBySlug = async <T extends TablesWithSlug>(table: T, slug: string) => {
-    const { data, error } = await supabase
+    const { data, error } = await supabaseClient
       .from(table)
       .select('*')
       .eq('slug', slug)
@@ -32,4 +32,4 @@ class SupabaseProvider {
   };
 }
 
-export const supabaseProvider = new SupabaseProvider();
+export const supabase = new Supabase();

@@ -5,9 +5,9 @@ import { useState, useEffect, useRef } from 'react';
 import { ComponentText } from '@/components/common/ComponentText';
 
 const navs = [
-  { nav: './projects', href: '/#projects' },
-  { nav: './blogs', href: '/#blogs' },
-  { nav: './contact', href: '/#contact' },
+  { nav: 'projects', href: '/#projects' },
+  { nav: 'blogs', href: '/#blogs' },
+  { nav: 'contact', href: '/#contact' },
 ];
 
 
@@ -43,7 +43,7 @@ export const Navbar = () => {
         </Link>
 
         {/* Desktop nav */}
-        <div className='hidden md:flex gap-9'>
+        <div className='hidden md:flex gap-12'>
           {navs.map(({ nav, href }) => (
             <Link
               key={nav}

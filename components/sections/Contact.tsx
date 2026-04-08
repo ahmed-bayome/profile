@@ -1,8 +1,8 @@
 import { SectionHeader } from '../common/SectionHeader';
-import { supabaseProvider } from '@/lib/supabase';
+import { supabase } from '@/lib/supabase';
 
 export const Contact = async () => {
-  const contacts = await supabaseProvider.get('contacts');
+  const contacts = await supabase.get('contacts');
   return (
     <section id='contact' className='container-x section-y scroll-mt-section'>
       <SectionHeader

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { SectionHeader } from '../common/SectionHeader';
-import { supabaseProvider } from '@/lib/supabase';
+import { supabase } from '@/lib/supabase';
+import { ExternalLink } from 'lucide-react';
 
 const ImagesMasonry = ({ images }: { images: string[]; }) => {
   const maxLength = 4;
@@ -27,18 +28,18 @@ const ImagesMasonry = ({ images }: { images: string[]; }) => {
 };
 
 export const Projects = async () => {
-  const projects = await supabaseProvider.get('projects');
+  const projects = await supabase.get('projects');
   return (
     <section id='projects' className='container-x section-y border-b border-border scroll-mt-section'>
       <SectionHeader title='projects' subtitle="things i've built" />
-      <div className='grid gap-px bg-border'>
+      <div className='grid gap-5'>
         {projects.map(({ id, slug, title, description, tags, images }, index) => (
           <Link
             key={id}
             href={`/projects/${slug}`}
             className='no-underline text-inherit'
           >
-            <div className='responsive gap-6 justify-between bg-bg p-8 transition-colors hover:bg-hover cursor-pointer'>
+            <div className='responsive gap-6 justify-between bg-surface border border-border p-8 transition-colors hover:bg-hover cursor-pointer'>
               <div className='flex flex-col justify-between'>
                 <div>
                   <p className='text-green text-2xs mb-4'>// 0{index + 1}</p>
@@ -48,14 +49,14 @@ export const Projects = async () => {
                     {tags.map((tag) => (
                       <span
                         key={tag}
-                        className='border border-border text-muted px-2.5 py-1 text-2xs'
+                        className='border border-border text-text/90 px-3 py-1.5 text-xs bg-surface'
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
                 </div>
-                <p className='mt-5 text-green text-2xs self-start'>→ view project</p>
+                <p className='mt-5 text-green text-sm flex items-center gap-1.5 self-start'><ExternalLink className="w-4 h-4" /> view project</p>
               </div>
               <ImagesMasonry images={images} />
             </div>

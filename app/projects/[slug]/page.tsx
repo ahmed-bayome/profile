@@ -1,13 +1,13 @@
 import { notFound } from 'next/navigation';
 import { ProjectDetail } from '@/components/pages/ProjectDetail';
 import { Footer } from '@/components/common/Footer';
-import { supabaseProvider } from '@/lib/supabase';
+import { supabase } from '@/lib/supabase';
 import { Metadata } from 'next';
 import { doMetadata } from '@/utils/seo';
 
 export const generateMetadata = async ({ params }: { params: Promise<{ slug: string; }>; }): Promise<Metadata> => {
   const { slug } = await params;
-  const project = await supabaseProvider.getBySlug('projects', slug);
+  const project = await supabase.getBySlug('projects', slug);
   if (!project) notFound();
   const { title, description } = project;
   return doMetadata({
@@ -18,7 +18,7 @@ export const generateMetadata = async ({ params }: { params: Promise<{ slug: str
 
 const ProjectPage = async ({ params }: { params: Promise<{ slug: string; }>; }) => {
   const { slug } = await params;
-  const project = await supabaseProvider.getBySlug('projects', slug);
+  const project = await supabase.getBySlug('projects', slug);
   if (!project) notFound();
   return (
     <div>

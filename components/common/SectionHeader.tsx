@@ -7,7 +7,7 @@ export const SectionHeader = ({
 }) => (
   <div className='flex items-center gap-4 mb-12'>
     <span className='font-mono text-3xl md:text-4xl font-bold tracking-tight'>
-      <span className='text-green'>./</span>
+      <span className='text-green'>#</span>
       {title}
     </span>
     <div className='flex-1 h-px bg-border' />

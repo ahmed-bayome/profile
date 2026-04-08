@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 import { readFile } from 'fs/promises';
 import { join } from 'path';
-import { supabaseProvider } from '@/lib/supabase';
+import { supabase } from '@/lib/supabase';
 
 export const runtime = 'nodejs';
 
@@ -10,7 +10,7 @@ export const contentType = 'image/png';
 
 const Image = async () => {
   const [hero, fontRegular, fontBold, fontExtraBold] = await Promise.all([
-    supabaseProvider.getSingle('hero').catch(() => null),
+    supabase.getSingle('hero').catch(() => null),
     readFile(join(process.cwd(), 'public/fonts/JetBrainsMono-Regular.ttf')),
     readFile(join(process.cwd(), 'public/fonts/JetBrainsMono-Bold.ttf')),
     readFile(join(process.cwd(), 'public/fonts/JetBrainsMono-ExtraBold.ttf')),
